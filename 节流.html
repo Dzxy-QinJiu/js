@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">点击</button>
+    <script>
+      const dom = document.getElementById("btn");
+      function print() {
+        console.log("哈哈哈");
+      }
+      dom.onclick = throttle(print,1000);
+
+      function throttle(func, wait) {
+        let lastTime = 0;
+        return function () {
+          let nowTime = new Date().getTime();
+          if (nowTime - lastTime > wait) {
+            func.apply(this, arguments);
+            lastTime=new Date().getTime();
+          }
+        };
+      }
+    </script>
+  </body>
+</html>

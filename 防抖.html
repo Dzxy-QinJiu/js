@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="aa" />
+    <script>
+      const dom = document.getElementById("aa");
+      function print() {
+        console.log(dom.value);
+      }
+      dom.oninput = debounce(print, 1000);
+
+      function debounce(func, delay) {
+        let timer = null;
+        return function () {
+          const self = this;
+          const args = arguments;
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            func.apply(self, args);
+          }, delay);
+        };
+      }
+    </script>
+  </body>
+</html>

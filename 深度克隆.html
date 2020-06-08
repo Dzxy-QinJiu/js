@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+            name: 'qin',
+            age: 20,
+            friends: [{
+                name: '小明',
+                age: 18
+            }, {
+                name: '小红',
+                age: 15
+            }, 111, 222],
+            desc: {
+                birth: 555,
+                arr: [1, 2, 3, 4]
+            },
+            // date: new Date(),
+            // reg: /A-Z/g,
+            test: null
+        }
+
+        function deepClone(origin, target) {
+            if (!target) {
+                var target = Array.isArray(origin) ? [] : {};
+            }
+            for (const key in origin) {
+                if (origin[key] !== null && typeof origin[key] === 'object') {
+                    if (Array.isArray(origin[key])) {
+                        target[key] = [];
+                    } else {
+                        target[key] = {};
+                    }
+                    deepClone(origin[key], target[key]);
+                } else {
+                    target[key] = origin[key];
+                }
+            }
+            return target;
+        }
+
+        console.log(deepClone(obj))
+    </script>
+</body>
+
+</html>

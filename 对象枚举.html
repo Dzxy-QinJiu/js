@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Student.prototype.school="清华"
+        function Student(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        var student = new Student('秦', 20);
+
+        for (const key in student) {
+            if(student.hasOwnProperty(key)){
+                console.log(key,student[key])
+            }
+        }
+    </script>
+</body>
+
+</html>

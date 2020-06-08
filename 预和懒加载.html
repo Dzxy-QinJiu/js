@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        .wrapper {
+            width: 600px;
+            height: 300px;
+            /* background-color: #ff0000; */
+            position: absolute;
+            top: 1600px;
+            border: 1px solid black;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper"></div>
+    <script>
+
+        var div = document.getElementsByTagName('div')[0];
+        var img = document.createElement('img');
+        window.onscroll = function () {    //预加载
+            if (window.innerHeight + window.pageYOffset >= div.offsetTop) {
+                img.onload = function () {     //懒加载
+                    div.appendChild(this);
+                }
+                img.src = "https://inews.gtimg.com/newsapp_bt/0/10311052320/1000";
+            }
+        }
+
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>

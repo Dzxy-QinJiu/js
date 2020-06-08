@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Person.prototype.print=function(){
+            console.log('print Person')
+        }
+        function Person(name,age){
+            this.name=name;
+            this.age=age;
+        }
+        const person=new Person("person",50);
+
+        Son.prototype.sPrint=function(){
+            console.log('son print')
+        }
+        function Son(sname){
+            this.sname=sname
+        }
+        const son=new Son("son")
+
+        //圣杯模式继承
+        function inherit(target,origin){
+            function F(){}
+            F.prototype=origin.prototype;
+            target.prototype=new F();
+            target.prototype.constructor=target;
+            target.prototype.uber=origin.prototype;
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

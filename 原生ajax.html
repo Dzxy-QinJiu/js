@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var xhr = new XMLHttpRequest();
+      xhr.open(
+        "get",
+        "https://www.cnblogs.com/tkqq000/p/12669780.html"
+      );
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          console.log(xhr.response);
+        }
+      };
+      xhr.send();
+    </script>
+  </body>
+</html>

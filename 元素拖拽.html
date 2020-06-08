@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        height: 3000px;
+      }
+      .wrapper {
+        width: 100px;
+        height: 100px;
+        background: #0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper" style="position: absolute; left: 0; top: 0;"></div>
+    <script>
+      const dom = document.getElementsByClassName("wrapper")[0];
+      dom.addEventListener(
+        "mousedown",
+        (e) => {
+            // console.log(window.getComputedStyle(dom,null).width)
+          const disX = e.clientX - parseInt(dom.style.left);
+          const disY = e.clientY - parseInt(dom.style.top);
+          const drag = (e) => {
+            dom.style.left = e.clientX - disX + "px";
+            dom.style.top = e.clientY - disY + "px";
+          };
+          document.addEventListener("mousemove", drag, false);
+          document.addEventListener(
+            "mouseup",
+            () => {
+              document.removeEventListener("mousemove", drag, false);
+            },
+            false
+          );
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
